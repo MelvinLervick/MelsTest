@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BeyondSearch
 {
@@ -34,19 +24,19 @@ namespace BeyondSearch
 			app.Shutdown();
 		}
 
-        private void Menu_WindowBrowserClick(object sender, RoutedEventArgs e)
-        {
-            WebPost browsers = new WebPost();
-            browsers.Show();
-        }
+		private void Menu_WindowBrowserClick(object sender, RoutedEventArgs e)
+		{
+			WebPost browsers = new WebPost();
+			browsers.Show();
+		}
 
-        private void Menu_TestBaseClick(object sender, RoutedEventArgs e)
-        {
-            TestBase tests = new TestBase();
-            tests.Show();
-        }
+		private void Menu_TestBaseClick(object sender, RoutedEventArgs e)
+		{
+			TestBase tests = new TestBase();
+			tests.Show();
+		}
 
-        public string SelectedImagePath
+		public string SelectedImagePath
 		{
 			get;
 			set;
@@ -57,7 +47,7 @@ namespace BeyondSearch
 			foreach (string s in Directory.GetLogicalDrives())
 			{
 				var item = new TreeViewItem {Header = s, Tag = s, FontWeight = FontWeights.Normal};
-			    item.Items.Add( dummyNode );
+				item.Items.Add( dummyNode );
 				item.Expanded += new RoutedEventHandler( folder_Expanded );
 				FoldersItem.Items.Add( item );
 			}
@@ -75,11 +65,11 @@ namespace BeyondSearch
 					{
 						var subitem = new TreeViewItem
 						{
-						    Header = s.Substring(s.LastIndexOf("\\") + 1),
-						    Tag = s,
-						    FontWeight = FontWeights.Normal
+							Header = s.Substring(s.LastIndexOf("\\") + 1),
+							Tag = s,
+							FontWeight = FontWeights.Normal
 						};
-					    subitem.Items.Add( dummyNode );
+						subitem.Items.Add( dummyNode );
 						subitem.Expanded += new RoutedEventHandler( folder_Expanded );
 						item.Items.Add( subitem );
 					}
@@ -98,7 +88,7 @@ namespace BeyondSearch
 			if (temp == null)
 				return;
 			SelectedImagePath = "";
-		    string temp2 = "";
+			string temp2 = "";
 			while (true)
 			{
 				string temp1 = temp.Header.ToString();
@@ -116,41 +106,41 @@ namespace BeyondSearch
 			}
 			//show user selected path
 			//MessageBox.Show( SelectedImagePath );
-            if (this.BuildDirectoryAndFileList(SelectedImagePath))
-            {
-                FolderList.ItemsSource = this.SelectedFolderDirectoryNamesAndFileNames;
-            }
+			if (this.BuildDirectoryAndFileList(SelectedImagePath))
+			{
+				FolderList.ItemsSource = this.SelectedFolderDirectoryNamesAndFileNames;
+			}
 		}
 
-	    public List<FolderItem> SelectedFolderDirectoryNamesAndFileNames { get; set; }
-        private bool BuildDirectoryAndFileList(string path)
-        {
-            DirectoryInfo filesAndDirectories = new DirectoryInfo(path);
-            this.SelectedFolderDirectoryNamesAndFileNames = new List<FolderItem>();
-            
-            this.AddDirectoryNamesToSelectedFolderItems(filesAndDirectories);
+		public List<FolderItem> SelectedFolderDirectoryNamesAndFileNames { get; set; }
+		private bool BuildDirectoryAndFileList(string path)
+		{
+			DirectoryInfo filesAndDirectories = new DirectoryInfo(path);
+			this.SelectedFolderDirectoryNamesAndFileNames = new List<FolderItem>();
+			
+			this.AddDirectoryNamesToSelectedFolderItems(filesAndDirectories);
 
-            this.AddFileNamesToSelectedFolderItems(filesAndDirectories);
+			this.AddFileNamesToSelectedFolderItems(filesAndDirectories);
 
-            return true;
-        }
+			return true;
+		}
 
-	    private void AddFileNamesToSelectedFolderItems(DirectoryInfo filesAndDirectories)
-	    {
-	        FileSystemInfo[] files = filesAndDirectories.GetFiles();
-	        foreach (var file in files)
-	        {
-	            this.SelectedFolderDirectoryNamesAndFileNames.Add(new FolderItem(file.Name, file.Extension.Replace(".", "")));
-	        }
-	    }
+		private void AddFileNamesToSelectedFolderItems(DirectoryInfo filesAndDirectories)
+		{
+			FileSystemInfo[] files = filesAndDirectories.GetFiles();
+			foreach (var file in files)
+			{
+				this.SelectedFolderDirectoryNamesAndFileNames.Add(new FolderItem(file.Name, file.Extension.Replace(".", "")));
+			}
+		}
 
-	    private void AddDirectoryNamesToSelectedFolderItems(DirectoryInfo filesAndDirectories)
-	    {
-	        DirectoryInfo[] directories = filesAndDirectories.GetDirectories();
-	        foreach (var directory in directories)
-	        {
-	            this.SelectedFolderDirectoryNamesAndFileNames.Add(new FolderItem(directory.Name));
-	        }
-	    }
+		private void AddDirectoryNamesToSelectedFolderItems(DirectoryInfo filesAndDirectories)
+		{
+			DirectoryInfo[] directories = filesAndDirectories.GetDirectories();
+			foreach (var directory in directories)
+			{
+				this.SelectedFolderDirectoryNamesAndFileNames.Add(new FolderItem(directory.Name));
+			}
+		}
 	}
 }
