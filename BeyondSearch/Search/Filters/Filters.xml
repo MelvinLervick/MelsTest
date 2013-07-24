@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<filters>
+	<include>
+		<word>Boy</word>
+		<word>Now</word>
+		<word>Time</word>
+		<word>All</word>
+		<word>Good</word>
+		<word>Men</word>
+		<word>County</word>
+	</include>
+	<exclude>
+		<word>is</word>
+		<word>the</word>
+		<word>for</word>
+		<word>to</word>
+		<word>of</word>
+		<word>their</word>
+	</exclude>
+	<phrases>
+		<phrase>now is the time</phrase>
+		<phrase>for all good men</phrase>
+		<phrase>to come to the aid of their country</phrase>
+		<phrase>forescore and seven years ago</phrase>
+		<phrase>our forefathers</phrase>
+		<phrase>brought forth on the face of this earth</phrase>
+		<phrase>a new nation</phrase>
+		<phrase>dedicated to the proposition</phrase>
+		<phrase>that all men and women are created equal</phrase>
+	</phrases>
+</filters>

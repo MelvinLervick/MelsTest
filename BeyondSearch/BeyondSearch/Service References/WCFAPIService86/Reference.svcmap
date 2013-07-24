@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2110acf7-7e2b-4da6-b880-d98b21990930" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://mswcibe01n:8242/search.service.web-branches.develop-short/v9.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="v9.disco" MetadataType="Disco" ID="56f5e992-ea2a-46cb-8482-63350501d071" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?disco" />
+    <MetadataFile FileName="v9.wsdl" MetadataType="Wsdl" ID="2312118d-8947-4605-93c4-aa55e9040806" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="WsPrimeQueryService.wsdl" MetadataType="Wsdl" ID="273df62d-18bc-49c1-8242-33681f960ecd" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?wsdl" />
+    <MetadataFile FileName="v9.xsd" MetadataType="Schema" ID="b53e8c2a-b6bb-4e70-8f0c-871678555b58" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd5" />
+    <MetadataFile FileName="v91.xsd" MetadataType="Schema" ID="51f39293-a522-4c0f-8b59-475ccc646e9b" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd3" />
+    <MetadataFile FileName="v92.xsd" MetadataType="Schema" ID="3405bad1-c90f-4e7f-a32b-3cda942f032a" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd4" />
+    <MetadataFile FileName="v93.xsd" MetadataType="Schema" ID="0055b777-c490-43b5-ba6a-a41ee9f39e25" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd2" />
+    <MetadataFile FileName="v94.xsd" MetadataType="Schema" ID="3f24d66d-8d88-4a77-b7ec-5ef872117248" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd1" />
+    <MetadataFile FileName="v95.xsd" MetadataType="Schema" ID="3e63a448-1c4f-4b87-892c-614c6ec29850" SourceId="1" SourceUrl="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,70 @@
+﻿<Window x:Class="BeyondSearch.WebPost"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen" FontSize="12pt"
+        Title="WebPost" Height="400" Width="800">
+  
+  <Grid ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="25" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="25" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Menu FontSize="12pt" Grid.Row="0" IsMainMenu="True">
+      <MenuItem Header="_File">
+        <MenuItem Header="_Exit" Click="Menu_FileExitClick" />
+      </MenuItem>
+      <MenuItem Header="_Tools">
+        <MenuItem Header="_Options" />
+      </MenuItem>
+      <MenuItem Header="_Help" />
+    </Menu>
+    <Grid Grid.Row="1" Margin="0 3 0 3">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="40" />
+        <RowDefinition Height="40" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="100" />
+      </Grid.ColumnDefinitions>
+      <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="Blue" BorderThickness="0 0 0 2" />
+      <Label Grid.Row="0" Grid.Column="0" Width="30" FontSize="12" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Right">Url</Label>
+      <RadioButton Name="rbGet" GroupName="Request" Grid.Row="0" Grid.Column="0"  FontSize="10" VerticalAlignment="top" Margin="5 5 0 0" IsChecked="True">Get</RadioButton>
+      <RadioButton Name="rbPost" GroupName="Request" Grid.Row="0" Grid.Column="0"  FontSize="10" VerticalAlignment="Bottom" Margin="5 0 0 5">Post</RadioButton>
+      <TextBox Name="TextUrl" Grid.Column="1" Height="25" Width="500" AcceptsReturn="False" FontSize="12" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"></TextBox>
+      <TextBox Name="TextCount" Grid.Column="1" Height="25" Width="50" AcceptsReturn="False" FontSize="12" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right"></TextBox>
+      <Label Grid.Row="0" Grid.Column="2" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center">Browser</Label>
+      <CheckBox Name="CheckboxBrowserLeft" Grid.Row="0" Grid.Column="2"  FontSize="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5 0 0 5" IsChecked="True">Left</CheckBox>
+      <CheckBox Name="CheckboxBrowserRight" Grid.Row="0" Grid.Column="2"  FontSize="10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5 0 5 5">Right</CheckBox>
+      <Label Grid.Row="1" Grid.Column="0" Width="80" FontSize="12" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Right">Parameters</Label>
+      <TextBox Name="TextParameters" Grid.Row="1" Grid.Column="1" Height="25" AcceptsReturn="True" FontSize="12" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+      <Button Name="ButtonUrl" Grid.Row="1" Grid.Column="2" Height="30" Width="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,2,0,3" Click="ButtonUrl_Click">Go</Button>
+      <Button Name="ButtonUrl1" Grid.Row="1" Grid.Column="2" Height="30" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,2,5,3" Click="ButtonUrl1_Click">P1</Button>
+      <Button Name="ButtonUrl2" Grid.Row="1" Grid.Column="2" Height="30" Width="25" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,2,5,3" Click="ButtonUrl2_Click">T2</Button>
+      <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="Beige">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" MinWidth="250" />
+          <ColumnDefinition Width="*" MinWidth="250" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Blue" BorderThickness="0 0 0 2" />
+        <WebBrowser Name="Browser1" Grid.Column="0" Margin="2,2,5,2" LoadCompleted="Browser1_OnLoadCompleted"></WebBrowser>
+        <TextBox Name="Source1" Grid.Column="0" Margin="2,2,5,2" FontSize="10" VerticalScrollBarVisibility="Auto"></TextBox>
+        <GridSplitter Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Width="6" Background="LightGray" Margin="0,0,0,2" />
+        <!--<TextBlock Grid.Column="1">Test</TextBlock>-->
+        <WebBrowser Name="Browser2" Grid.Column="1" Margin="2,2,5,2" LoadCompleted="Browser2_OnLoadCompleted"></WebBrowser>
+        <TextBox Name="Source2" Grid.Column="1" Margin="2,2,5,2" FontSize="10" VerticalScrollBarVisibility="Auto"></TextBox>
+      </Grid>
+    </Grid>
+
+    <TextBox Name="TextMessage" Grid.Column="0" Grid.Row="2" Height="25" AcceptsReturn="False" FontSize="12" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+  </Grid>
+</Window>

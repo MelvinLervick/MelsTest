@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InfoSpace.WebSearchApi.Results" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InfoSpace.WebSearchApi.Results" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/InfoSpace.Services.WsQuery.ResponseObjects" />
+  <xs:import schemaLocation="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfContextInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContextInfo" nillable="true" type="tns:ContextInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContextInfo" nillable="true" type="tns:ArrayOfContextInfo" />
+  <xs:complexType name="ContextInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InfoDatum">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContextInfo" nillable="true" type="tns:ContextInfo" />
+  <xs:complexType name="InfoDatum">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="InfoDatum" nillable="true" type="tns:InfoDatum" />
+  <xs:complexType name="LocationInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ContextInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InputLocation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LatLon" nillable="true" type="tns:LatLon" />
+          <xs:element minOccurs="0" name="Radius" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocationInfo" nillable="true" type="tns:LocationInfo" />
+  <xs:complexType name="LatLon">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LatLon" nillable="true" type="tns:LatLon" />
+  <xs:complexType name="LocalInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ContextInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Sort" type="tns:LocalSorts" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalInfo" nillable="true" type="tns:LocalInfo" />
+  <xs:simpleType name="LocalSorts">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Relevance" />
+      <xs:enumeration value="Distance" />
+      <xs:enumeration value="Alphabetical" />
+      <xs:enumeration value="HighestRated" />
+      <xs:enumeration value="MostReviewed" />
+      <xs:enumeration value="HasOffers" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LocalSorts" nillable="true" type="tns:LocalSorts" />
+  <xs:complexType name="ResultExpansionInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ContextInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentSourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="ExpansionContent" type="xs:int" />
+          <xs:element minOccurs="0" name="ResultKey" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultExpansionInfo" nillable="true" type="tns:ResultExpansionInfo" />
+  <xs:complexType name="WsApiSearchResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseNode">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/InfoSpace.Services.WsQuery.ResponseObjects" minOccurs="0" name="Debug" nillable="true" type="q1:SearchResultDebug" />
+          <xs:element minOccurs="0" name="Diagnostics" nillable="true" type="tns:SearchDiagnosticInfo" />
+          <xs:element minOccurs="0" name="ElapsedMiliSeconds" type="xs:double" />
+          <xs:element minOccurs="0" name="ElapsedQueryMilliSeconds" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Error" nillable="true" type="tns:WsApiPrimeErrorResult" />
+          <xs:element minOccurs="0" name="SearchResponseDetails" nillable="true" type="tns:SearchResponseDetails" />
+          <xs:element minOccurs="0" name="SearchType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WsApiSearchResponse" nillable="true" type="tns:WsApiSearchResponse" />
+  <xs:complexType name="ResponseNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Children" nillable="true" type="tns:ArrayOfResponseNode" />
+      <xs:element minOccurs="0" name="EnhancedData" nillable="true" type="tns:ArrayOfInfoDatum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseNode" nillable="true" type="tns:ResponseNode" />
+  <xs:complexType name="ArrayOfResponseNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResponseNode" nillable="true" type="tns:ResponseNode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResponseNode" nillable="true" type="tns:ArrayOfResponseNode" />
+  <xs:complexType name="ArrayOfInfoDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InfoDatum" nillable="true" type="tns:InfoDatum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInfoDatum" nillable="true" type="tns:ArrayOfInfoDatum" />
+  <xs:complexType name="NewsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EpochSeconds" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NewsResult" nillable="true" type="tns:NewsResult" />
+  <xs:complexType name="StandardSearchResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AbsolutePosition" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DisplayUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FormattedDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FormattedDisplayUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FormattedTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsPaid" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SiteLink" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StandardSearchResult" nillable="true" type="tns:StandardSearchResult" />
+  <xs:complexType name="BaseSearchResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseNode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentSources" nillable="true" type="tns:ArrayOfContentSource" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseSearchResult" nillable="true" type="tns:BaseSearchResult" />
+  <xs:complexType name="ArrayOfContentSource">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContentSource" nillable="true" type="tns:ContentSource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContentSource" nillable="true" type="tns:ArrayOfContentSource" />
+  <xs:complexType name="ContentSource">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanDisplay" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EngineOriginalPosition" type="xs:int" />
+      <xs:element minOccurs="0" name="FriendlyName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContentSource" nillable="true" type="tns:ContentSource" />
+  <xs:complexType name="NavigationalResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SiteMatchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsMarketing" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MarketingMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NavigationalResult" nillable="true" type="tns:NavigationalResult" />
+  <xs:complexType name="SiteMatchResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SiteMatchResult" nillable="true" type="tns:SiteMatchResult" />
+  <xs:complexType name="WebResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebResult" nillable="true" type="tns:WebResult" />
+  <xs:complexType name="AdResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WebResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsCallOnly" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AdResult" nillable="true" type="tns:AdResult" />
+  <xs:complexType name="AudioResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Artist" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AudioDuration" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AudioSourceUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CacheId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Copyright" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileSize" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileUnit" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AudioResult" nillable="true" type="tns:AudioResult" />
+  <xs:complexType name="VideoResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Copyright" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocAlternateImage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocChannel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocFooterImage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocImage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileSize" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VideoDuration" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VideoResult" nillable="true" type="tns:VideoResult" />
+  <xs:complexType name="FantasyFinderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Height" type="xs:int" />
+          <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Width" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FantasyFinderResult" nillable="true" type="tns:FantasyFinderResult" />
+  <xs:complexType name="StockResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdProductArea" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayChange" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayChangePercent" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayHigh" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayLast" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayLow" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayOpen" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Exchange" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LongName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Provider" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QuoteDateTime" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StockResult" nillable="true" type="tns:StockResult" />
+  <xs:complexType name="WeatherCurrentResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IconId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IconTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastUpdate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Temperature" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WindChill" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WindDirection" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WindSpeed" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WeatherCurrentResult" nillable="true" type="tns:WeatherCurrentResult" />
+  <xs:complexType name="MovieResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Actors" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Director" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalTheatreId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FandangoWired" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Genre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InternalTheatreId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsValidTrailer" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsValidWebsite" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MovieId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MovieName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MovieTimes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Synopsis" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TheatreName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TrailerUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MovieResult" nillable="true" type="tns:MovieResult" />
+  <xs:complexType name="HoroscopeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HoroscopeResult" nillable="true" type="tns:HoroscopeResult" />
+  <xs:complexType name="PetFinderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdProductArea" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Breed" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PetName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PetUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PictureUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Provider" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Shelter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShelterUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PetFinderResult" nillable="true" type="tns:PetFinderResult" />
+  <xs:complexType name="ImageResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileSize" type="xs:double" />
+          <xs:element minOccurs="0" name="FileSizeUnits" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FormattedFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Height" type="xs:int" />
+          <xs:element minOccurs="0" name="SourceUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ThumbNailHeight" type="xs:int" />
+          <xs:element minOccurs="0" name="ThumbNailUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ThumbNailWidth" type="xs:int" />
+          <xs:element minOccurs="0" name="Width" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ImageResult" nillable="true" type="tns:ImageResult" />
+  <xs:complexType name="WsApiPrimeErrorResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorCode" type="tns:WsQueryErrorCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WsApiPrimeErrorResult" nillable="true" type="tns:WsApiPrimeErrorResult" />
+  <xs:simpleType name="WsQueryErrorCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InitializationError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QueryInvalid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QueryArgumentInvalid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QuerySiteInvalid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">736</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QueryEmpty">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">737</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QueryIPAddressInvalid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">602</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QueryUserAgentMissing">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">766</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CobrandCategoryNotEnabled">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">738</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NoResultFound">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AdultTermInQuery">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServerError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">999</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GeoCodeError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">666</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WhereQueryTermInvalid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">667</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WsQueryErrorCode" nillable="true" type="tns:WsQueryErrorCode" />
+  <xs:complexType name="AYLFResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AYLFResult" nillable="true" type="tns:AYLFResult" />
+  <xs:complexType name="AYLFScriptResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Script" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AYLFScriptResult" nillable="true" type="tns:AYLFScriptResult" />
+  <xs:complexType name="HoroscopeSignResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:HoroscopeResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdProductArea" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HoroscopeCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HoroscopeSign" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Meter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Provider" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Summary" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HoroscopeSignResult" nillable="true" type="tns:HoroscopeSignResult" />
+  <xs:complexType name="LocalDataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalDataResult" nillable="true" type="tns:LocalDataResult" />
+  <xs:complexType name="SellerRatingsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdvertiserInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rating" type="xs:double" />
+          <xs:element minOccurs="0" name="ReviewCount" type="xs:int" />
+          <xs:element minOccurs="0" name="SourceUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SellerRatingsResult" nillable="true" type="tns:SellerRatingsResult" />
+  <xs:complexType name="DeepLinkResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SiteLink" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeepLinkResult" nillable="true" type="tns:DeepLinkResult" />
+  <xs:complexType name="WeatherForecastResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DayName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DayOffset" type="xs:int" />
+          <xs:element minOccurs="0" name="IconId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IconTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TemperatureMax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TemperatureMin" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WeatherForecastResult" nillable="true" type="tns:WeatherForecastResult" />
+  <xs:complexType name="LocalAdResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Confidence" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LatLon" nillable="true" type="tns:LatLon" />
+          <xs:element minOccurs="0" name="NumReviews" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalAdResult" nillable="true" type="tns:LocalAdResult" />
+  <xs:complexType name="CategoryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Count" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoryResult" nillable="true" type="tns:CategoryResult" />
+  <xs:complexType name="CategoryGroupResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoryGroupResult" nillable="true" type="tns:CategoryGroupResult" />
+  <xs:complexType name="LocalOfferResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalOfferResult" nillable="true" type="tns:LocalOfferResult" />
+  <xs:complexType name="LocalReviewResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HelpfulCount" type="xs:int" />
+          <xs:element minOccurs="0" name="Rating" type="xs:double" />
+          <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnhelpfulCount" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalReviewResult" nillable="true" type="tns:LocalReviewResult" />
+  <xs:complexType name="LocalResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element name="Confidence" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LatLon" nillable="true" type="tns:LatLon" />
+          <xs:element minOccurs="0" name="NumReviews" type="xs:int" />
+          <xs:element minOccurs="0" name="Rating" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalResult" nillable="true" type="tns:LocalResult" />
+  <xs:complexType name="LocalDetailResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LocalResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AdditionalInfoText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BusinessHours" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BusinessId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FormattedMessageText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImpressionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MenuUrl" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MessageBullets" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element minOccurs="0" name="MessageLandingUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MessageText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PublisherId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReservationUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShareUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TeaserText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VideoUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalDetailResult" nillable="true" type="tns:LocalDetailResult" />
+  <xs:complexType name="FaviconResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FaviconUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OfficialSiteBadge" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FaviconResult" nillable="true" type="tns:FaviconResult" />
+  <xs:complexType name="ClickToCallResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardSearchResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Disclaimer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClickToCallResult" nillable="true" type="tns:ClickToCallResult" />
+  <xs:complexType name="ResultGroup">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseNode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CategoryType" type="tns:ResultGroupCategoryType" />
+          <xs:element minOccurs="0" name="GroupBy" type="tns:GroupBy" />
+          <xs:element minOccurs="0" name="GroupType" type="tns:ResultGroupTypes" />
+          <xs:element minOccurs="0" name="Origin" type="tns:ResultGroupOrigin" />
+          <xs:element minOccurs="0" name="Query" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Region" type="tns:Region" />
+          <xs:element minOccurs="0" name="ResultGroupDetails" nillable="true" type="tns:ResultGroupDetails" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultGroup" nillable="true" type="tns:ResultGroup" />
+  <xs:simpleType name="ResultGroupCategoryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Web" />
+      <xs:enumeration value="Images" />
+      <xs:enumeration value="News" />
+      <xs:enumeration value="Video" />
+      <xs:enumeration value="SiteMatch" />
+      <xs:enumeration value="FantasyFinder" />
+      <xs:enumeration value="Weather" />
+      <xs:enumeration value="Movie" />
+      <xs:enumeration value="Horoscope" />
+      <xs:enumeration value="Stock" />
+      <xs:enumeration value="PetFinder" />
+      <xs:enumeration value="Audio" />
+      <xs:enumeration value="RealTime" />
+      <xs:enumeration value="Related" />
+      <xs:enumeration value="Navigational" />
+      <xs:enumeration value="MarketingNavigational" />
+      <xs:enumeration value="Local" />
+      <xs:enumeration value="LocalAds" />
+      <xs:enumeration value="LocalCategories" />
+      <xs:enumeration value="LocalRegions" />
+      <xs:enumeration value="Reviews" />
+      <xs:enumeration value="LocalOffers" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResultGroupCategoryType" nillable="true" type="tns:ResultGroupCategoryType" />
+  <xs:simpleType name="GroupBy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Relevance" />
+      <xs:enumeration value="Date" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GroupBy" nillable="true" type="tns:GroupBy" />
+  <xs:simpleType name="ResultGroupTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Main" />
+      <xs:enumeration value="Special" />
+      <xs:enumeration value="ExtraCategory" />
+      <xs:enumeration value="Recommendation" />
+      <xs:enumeration value="Local" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResultGroupTypes" nillable="true" type="tns:ResultGroupTypes" />
+  <xs:simpleType name="ResultGroupOrigin">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Explicit" />
+      <xs:enumeration value="Recommendation" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResultGroupOrigin" nillable="true" type="tns:ResultGroupOrigin" />
+  <xs:simpleType name="Region">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="TopNav" />
+      <xs:enumeration value="Right" />
+      <xs:enumeration value="BottomNav" />
+      <xs:enumeration value="Main" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Region" nillable="true" type="tns:Region" />
+  <xs:complexType name="ResultGroupDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxCount" type="xs:long" />
+      <xs:element minOccurs="0" name="ResultEnd" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultStart" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultsCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultGroupDetails" nillable="true" type="tns:ResultGroupDetails" />
+  <xs:complexType name="SearchDiagnosticInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Milliseconds" type="xs:long" />
+      <xs:element minOccurs="0" name="ThreadId" type="xs:int" />
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="ChildWork" nillable="true" type="tns:ArrayOfSearchDiagnosticInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchDiagnosticInfo" nillable="true" type="tns:SearchDiagnosticInfo" />
+  <xs:complexType name="ArrayOfProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProperty" nillable="true" type="tns:ArrayOfProperty" />
+  <xs:complexType name="Property">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Property" nillable="true" type="tns:Property" />
+  <xs:complexType name="ArrayOfSearchDiagnosticInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SearchDiagnosticInfo" nillable="true" type="tns:SearchDiagnosticInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSearchDiagnosticInfo" nillable="true" type="tns:ArrayOfSearchDiagnosticInfo" />
+  <xs:complexType name="SearchResponseDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AntiPhrase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputQuery" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAdultSponsored" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAdvancedSearch" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNavigational" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LocationInfo" nillable="true" type="tns:LocationInfo" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="SpellingAutoCorrect" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpellingSuggestion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchResponseDetails" nillable="true" type="tns:SearchResponseDetails" />
+</xs:schema>

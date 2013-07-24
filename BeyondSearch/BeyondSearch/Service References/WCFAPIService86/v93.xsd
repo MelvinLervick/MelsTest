@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InfoSpace.Services.WsQuery" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InfoSpace.Services.WsQuery" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://mswcibe01n.inspinc.ad:8242/Search.Service.Web-branches.develop-short/v9.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/InfoSpace.WebSearchApi.Results" />
+  <xs:complexType name="SearchQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdultWarning" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AdvancedAllWords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedAnyWords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedDomain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedExactWords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedImageColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedImageFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedImageSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedIncludeDomain" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AdvancedLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedNoneWords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdvancedSearch" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AnonymousUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BoldKeywords" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DebugEnabled" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DebugParameters" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="EndUserIp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EngineLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EngineLocale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtendedLogging" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyFriendly" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromAbsolutePosition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromClickableObjectId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromClickableObjectPosition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromPageId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HeaderParameters" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/InfoSpace.WebSearchApi.Results" minOccurs="0" name="Information" nillable="true" type="q2:ArrayOfContextInfo" />
+      <xs:element minOccurs="0" name="PreviousActionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Qi" type="xs:int" />
+      <xs:element minOccurs="0" name="Qlnk" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Query" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Segment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerSessionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Site" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkipNavigation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuggestedResultToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitorId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchQuery" nillable="true" type="tns:SearchQuery" />
+</xs:schema>
